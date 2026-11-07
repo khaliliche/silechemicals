@@ -102,19 +102,53 @@ export default async function HomePage({
       <section className="relative overflow-hidden bg-linear-to-b from-brand-50 to-white">
         <div className="pointer-events-none absolute -end-16 -top-24 h-72 w-72 rounded-full bg-brand-200/50 blur-3xl" />
         <div className="pointer-events-none absolute -start-20 top-40 h-64 w-64 rounded-full bg-lime-200/50 blur-3xl" />
-        {/* Phone / tablet: photos peek in at the top and bottom edges of the hero */}
-        <div aria-hidden className="pointer-events-none absolute inset-0 xl:hidden">
-          <div className="absolute inset-x-0 top-0 grid h-24 grid-cols-3 gap-2.5 px-3 [mask-image:linear-gradient(to_bottom,black_0%,black_25%,transparent_100%)] sm:h-32 sm:px-8">
-            {HERO_TILES.slice(0, 3).map((p) => (
-              <div key={p.src} className="relative -mt-3 overflow-hidden rounded-2xl">
-                <Image src={p.src} alt="" fill sizes="(min-width: 640px) 30vw, 33vw" className="object-cover" />
+        {/* Phone / tablet: curated product showcase. Top: small overlapping fan above the logo. Bottom: swipeable rail. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 flex h-24 items-start justify-center pt-2 [mask-image:linear-gradient(to_bottom,black_0%,black_82%,transparent_100%)] sm:h-32 sm:pt-4 xl:hidden"
+        >
+          <div className="flex items-start -space-x-3 sm:-space-x-4">
+            {HERO_TILES.slice(0, 3).map((p, i) => (
+              <div
+                key={p.src}
+                style={{ "--i": i } as React.CSSProperties}
+                className={`hero-rise relative aspect-[4/5] overflow-hidden rounded-xl bg-white shadow-md shadow-brand-900/20 ring-2 ring-white ${
+                  i === 1
+                    ? "z-10 w-14 sm:w-[4.25rem]"
+                    : `w-12 translate-y-1.5 sm:w-16 ${i === 0 ? "-rotate-6" : "rotate-6"}`
+                }`}
+              >
+                <Image
+                  src={p.src}
+                  alt=""
+                  fill
+                  priority
+                  sizes="80px"
+                  className="object-cover"
+                />
               </div>
             ))}
           </div>
-          <div className="absolute inset-x-0 bottom-0 grid h-44 grid-cols-3 gap-2.5 px-3 pb-3 [mask-image:linear-gradient(to_top,black_0%,black_55%,transparent_100%)] sm:h-56 sm:px-8">
-            {HERO_TILES.slice(3).map((p) => (
-              <div key={p.src} className="relative overflow-hidden rounded-2xl shadow-md shadow-brand-900/10">
-                <Image src={p.src} alt="" fill sizes="(min-width: 640px) 30vw, 33vw" className="object-cover" />
+        </div>
+        <div className="absolute inset-x-0 bottom-0 z-10 xl:hidden">
+          <div className="flex snap-x snap-mandatory items-end gap-3 overflow-x-auto overscroll-x-contain scroll-smooth px-4 pb-6 pt-6 [scrollbar-width:none] [mask-image:linear-gradient(to_right,transparent_0,black_20px,black_calc(100%_-_20px),transparent_100%)] sm:gap-4 sm:px-8 [&::-webkit-scrollbar]:hidden [&>*:first-child]:ms-auto [&>*:last-child]:me-auto">
+            {HERO_TILES.slice(3).map((p, i) => (
+              <div
+                key={p.src}
+                style={{ "--i": i + 3 } as React.CSSProperties}
+                className={`hero-rise relative aspect-[4/5] w-36 shrink-0 snap-center overflow-hidden rounded-2xl bg-white ring-1 ring-brand-100 sm:w-40 ${
+                  i % 2 === 1
+                    ? "-translate-y-3 shadow-xl shadow-brand-900/25"
+                    : "shadow-md shadow-brand-900/15"
+                }`}
+              >
+                <Image
+                  src={p.src}
+                  alt={p.alt}
+                  fill
+                  sizes="(min-width: 640px) 160px, 144px"
+                  className="object-cover"
+                />
               </div>
             ))}
           </div>
@@ -130,7 +164,7 @@ export default async function HomePage({
           <HeroPhoto src="/hero/hero-4.webp" alt="Ricci Car Care foam tank" className="me-10 -rotate-2" />
           <HeroPhoto src="/hero/hero-7.webp" alt="Pressure washer brass valve" className="rotate-2" />
         </div>
-        <div className="relative mx-auto max-w-6xl px-4 pb-52 pt-24 text-center sm:pb-64 sm:pt-32 xl:py-28">
+        <div className="relative mx-auto max-w-6xl px-4 pb-64 pt-24 text-center sm:pb-72 sm:pt-32 xl:py-28">
           {/* Logo above the title */}
           <Image
             src="/logo.png"
@@ -140,22 +174,25 @@ export default async function HomePage({
             priority
             className="mx-auto mb-8 w-40 sm:w-48"
           />
-          <h1 className="mx-auto max-w-3xl text-4xl font-extrabold tracking-tight text-brand-900 sm:text-5xl">
+          <h1 className="mx-auto max-w-3xl text-balance text-3xl font-extrabold leading-[1.15] tracking-tight text-brand-900 min-[380px]:text-4xl sm:text-5xl">
             {t("title")}
           </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-lg text-slate-600">
+          <p className="mx-auto mt-4 max-w-md text-pretty text-base leading-relaxed text-slate-600 sm:mt-5 sm:max-w-2xl sm:text-lg">
             {t("subtitle")}
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <p className="mx-auto mt-3 max-w-md text-pretty text-sm leading-relaxed text-slate-600 sm:mt-4 sm:max-w-2xl sm:text-base">
+            {t("company")}
+          </p>
+          <div className="mx-auto mt-7 flex max-w-xs flex-col gap-3 sm:mt-8 sm:max-w-none sm:flex-row sm:justify-center">
             <Link
               href="/catalogue"
-              className="rounded-full bg-brand-600 px-7 py-3 font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:-translate-y-0.5 hover:bg-brand-700"
+              className="inline-flex items-center justify-center rounded-full bg-brand-600 px-7 py-3 font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:-translate-y-0.5 hover:bg-brand-700"
             >
               {t("ctaCatalogue")}
             </Link>
             <Link
               href="/cart"
-              className="inline-flex items-center gap-2 rounded-full bg-lime-400 px-7 py-3 font-semibold text-slate-900 shadow-lg shadow-lime-400/40 transition hover:-translate-y-0.5 hover:bg-lime-300"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-lime-400 px-7 py-3 font-semibold text-slate-900 shadow-lg shadow-lime-400/40 transition hover:-translate-y-0.5 hover:bg-lime-300"
             >
               <WhatsAppIcon size={18} />
               {t("ctaQuote")}

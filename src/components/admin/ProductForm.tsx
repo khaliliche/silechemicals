@@ -10,7 +10,7 @@ import {
   resizeImage,
   slugify,
 } from "@/lib/admin";
-import type { Product } from "@/lib/types";
+import type { Category, Product } from "@/lib/types";
 import { PALETTE, type PaletteColor } from "@/lib/colors";
 
 const input =
@@ -24,6 +24,7 @@ type FormState = {
   description_en: string;
   description_ar: string;
   slug: string;
+  category_id: string;
   availability: string;
   is_visible: boolean;
   is_featured: boolean;
@@ -74,7 +75,13 @@ function Card({
   );
 }
 
-export default function ProductForm({ product }: { product?: Product }) {
+export default function ProductForm({
+  product,
+  categories,
+}: {
+  product?: Product;
+  categories: Category[];
+})  {
   const router = useRouter();
 
   const [f, setF] = useState<FormState>({
@@ -85,6 +92,7 @@ export default function ProductForm({ product }: { product?: Product }) {
     description_en: product?.description_en ?? "",
     description_ar: product?.description_ar ?? "",
     slug: product?.slug ?? "",
+    category_id: product?.category_id ?? "",
     availability: product?.availability ?? "in_stock",
     is_visible: product?.is_visible ?? true,
     is_featured: product?.is_featured ?? false,
@@ -218,6 +226,8 @@ export default function ProductForm({ product }: { product?: Product }) {
     setError("");
     if (!f.title_fr.trim())
       return setError("Le titre en français est obligatoire.");
+    if (!f.category_id) return setError("La catégorie est obligatoire.");
+
     const slug = slugify(f.slug || f.title_fr);
     if (!slug) return setError("Le slug est invalide.");
 
@@ -322,7 +332,21 @@ export default function ProductForm({ product }: { product?: Product }) {
       </Card>
 
       <Card title="Détails">
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-3">
+          <Field label="Catégorie *">
+            <select
+              className={input}
+              value={f.category_id}
+              onChange={(e) => set("category_id", e.target.value)}
+            >
+              <option value="">Choisir…</option>
+              {categories.map((c) => (
+                <option key={c.id} value={c.id}>
+                  {c.name_fr}
+                </option>
+              ))}
+            </select>
+          </Field>
           <Field label="Disponibilité">
             <select
               className={input}

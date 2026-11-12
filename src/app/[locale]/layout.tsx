@@ -42,9 +42,9 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "meta" });
   return {
     metadataBase: new URL(siteUrl),
-    title: { default: t("title"), template: "%s | GuennounGroup" },
+    title: { default: t("title"), template: "%s | Sile Chemicals" },
     description: t("description"),
-    applicationName: "GuennounGroup",
+    applicationName: "Sile Chemicals",
     verification: googleVerification
       ? { google: googleVerification }
       : undefined,

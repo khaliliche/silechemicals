@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 
 const styles: Record<string, string> = {
-  in_stock: "bg-lime-100 text-lime-800",
+  in_stock: "bg-emerald-100 text-emerald-800",
   out_of_stock: "bg-red-100 text-red-700",
   on_request: "bg-amber-100 text-amber-800",
 };

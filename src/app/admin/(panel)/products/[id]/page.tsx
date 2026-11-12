@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import ProductForm from "@/components/admin/ProductForm";
-import type { Product } from "@/lib/types";
+import type { Category, Product } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
@@ -18,14 +18,22 @@ export default async function EditProductPage({
     .eq("id", id)
     .single();
 
-  if (!product) notFound();
+  
+
+  const { data: categories } = await supabase
+    .from("categories")
+    .select("*")
+    .order("sort_order", { ascending: true });
 
   return (
     <div>
       <h1 className="mb-6 text-2xl font-bold text-brand-900">
         Modifier le produit
       </h1>
-      <ProductForm product={product as Product} />
+      <ProductForm
+        product={product as Product}
+        categories={(categories ?? []) as Category[]}
+      />
     </div>
   );
 }

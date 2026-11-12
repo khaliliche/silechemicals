@@ -14,11 +14,11 @@ export const siteUrl = (
 export const googleVerification =
   process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || "";
 
-export const SITE_NAME = "GuennounGroup";
+export const SITE_NAME = "Sile Chemicals";
 
 // Default share image. For a better WhatsApp/Facebook preview, add a
 // 1200x630 image at public/og.jpg and change this to "/og.jpg".
-export const DEFAULT_OG_IMAGE = "/logo.png";
+export const DEFAULT_OG_IMAGE = "/og.png";
 
 const OG_LOCALE: Record<string, string> = {
   fr: "fr_FR",

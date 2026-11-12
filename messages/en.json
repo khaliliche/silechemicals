@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "GuennounGroup — Car washing products and equipment",
-    "description": "Car washing products and equipment, wholesale and piece by piece. Request your quote in a few clicks."
+    "title": "Sile Chemicals — Car washing chemicals and equipment",
+    "description": "Concentrates, individual products, machines and spare parts for car washing. Request your quote in a few clicks."
   },
   "nav": {
     "home": "Home",
@@ -17,9 +17,9 @@
     "requestQuote": "Request a quote"
   },
   "home": {
-    "title": "Welcome to Guennoun Net!",
+    "title": "Welcome to Sile Chemicals!",
     "subtitle": "We are delighted to welcome you and to introduce our products and our business.",
-    "company": "Guennoun Net is a company operating in the import and distribution of car cleaning products and equipment. In partnership with Italian companies, we offer a wide range of 100% Made in Italy products of very good quality at very suitable prices. Call us to quickly take advantage of our different ranges.",
+    "company": "Sile Chemicals offers a range of concentrated chemical products and car cleaning equipment, 100% Made in Italy, of very good quality at very suitable prices. Call us to quickly take advantage of our different ranges.",
     "ctaCatalogue": "View catalogue",
     "ctaQuote": "Request a quote",
     "modesTitle": "Wholesale or piece by piece, your choice",
@@ -30,7 +30,9 @@
     "featuredTitle": "Featured products",
     "viewAll": "View the full catalogue",
     "ctaBannerTitle": "Ready to request your quote?",
-    "ctaBannerText": "Choose your products and send your request: you receive your quotation on WhatsApp."
+    "ctaBannerText": "Choose your products and send your request: you receive your quotation on WhatsApp.",
+    "collectionsTitle": "Our collections",
+    "collectionsSubtitle": "Pick a category to see its products."
   },
   "catalogue": {
     "title": "Catalogue",
@@ -38,7 +40,9 @@
     "search": "Search for a product…",
     "empty": "Products are coming soon. Check back shortly!",
     "noResults": "No product matches your search.",
-    "count": "{count} product(s)"
+    "count": "{count} product(s)",
+    "all": "All",
+    "emptyCategory": "No products in this collection yet."
   },
   "product": {
     "back": "Back to catalogue",
@@ -59,7 +63,7 @@
     "more": "More products"
   },
   "footer": {
-    "tagline": "Car washing products and equipment, wholesale and piece by piece.",
+    "tagline": "Car washing chemicals and equipment.",
     "rights": "All rights reserved."
   },
   "cart": {
@@ -91,7 +95,7 @@
   },
   "about": {
     "title": "About",
-    "intro": "GuennounGroup supplies car washing products and equipment, wholesale and piece by piece.",
+    "intro": "Sile Chemicals supplies chemical products, machines and spare parts for car washing, wholesale and piece by piece.",
     "v1Title": "Selected products",
     "v1Text": "A range of washing products and equipment chosen for their efficiency and reliability.",
     "v2Title": "Wholesale and retail",

@@ -94,10 +94,15 @@ export default async function ProductPage({ params }: Props) {
         <div>
           <div className="mb-4 flex flex-wrap gap-2">
             <AvailabilityBadge value={product.availability} />
+            {product.category && (
+              <span className="rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-bold text-slate-700">
+                {loc(product.category, "name", locale)}
+              </span>
+            )}
             <span className="rounded-full bg-brand-50 px-2.5 py-1 text-[11px] font-bold text-brand-700">
               {c("wholesale")}
             </span>
-            <span className="rounded-full bg-lime-100 px-2.5 py-1 text-[11px] font-bold text-lime-800">
+            <span className="rounded-full bg-accent-100 px-2.5 py-1 text-[11px] font-bold text-accent-800">
               {c("pieceByPiece")}
             </span>
           </div>

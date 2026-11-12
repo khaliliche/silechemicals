@@ -64,7 +64,7 @@ export default async function AboutPage({
           <p className="mx-auto mt-3 max-w-xl text-brand-50">{t("ctaText")}</p>
           <Link
             href="/catalogue"
-            className="mt-7 inline-block rounded-full bg-lime-400 px-8 py-3 font-bold text-slate-900 transition-colors hover:bg-lime-300"
+            className="mt-7 inline-block rounded-full bg-accent-600 px-8 py-3 font-bold text-white transition-colors hover:bg-accent-700"
           >
             {t("ctaButton")}
           </Link>

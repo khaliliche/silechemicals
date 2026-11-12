@@ -256,7 +256,7 @@ export default function CartBubble() {
         <span key={count} className="bubble-bump text-3xl leading-none">
           🛒
         </span>
-        <span className="absolute -end-1 -top-1 flex h-6 min-w-6 items-center justify-center rounded-full bg-lime-400 px-1.5 text-xs font-extrabold text-slate-900 ring-2 ring-white">
+        <span className="absolute -end-1 -top-1 flex h-6 min-w-6 items-center justify-center rounded-full bg-accent-600 px-1.5 text-xs font-extrabold text-white ring-2 ring-white">
           {count}
         </span>
       </button>

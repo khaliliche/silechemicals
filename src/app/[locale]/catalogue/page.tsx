@@ -1,7 +1,8 @@
+import { Suspense } from "react";
 import { pageMeta } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import CatalogueGrid from "@/components/CatalogueGrid";
-import { getProducts } from "@/lib/products";
+import { getCategories, getProducts } from "@/lib/products";
 
 export const revalidate = 60;
 
@@ -21,7 +22,10 @@ export default async function CataloguePage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("catalogue");
-  const products = await getProducts();
+  const [products, categories] = await Promise.all([
+    getProducts(),
+    getCategories(),
+  ]);
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-12">
@@ -29,7 +33,9 @@ export default async function CataloguePage({
         {t("title")}
       </h1>
       <p className="mb-10 mt-2 text-slate-600">{t("subtitle")}</p>
-      <CatalogueGrid products={products} />
+      <Suspense>
+        <CatalogueGrid products={products} categories={categories} />
+      </Suspense>
     </section>
   );
 }

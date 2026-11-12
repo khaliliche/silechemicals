@@ -18,7 +18,7 @@ export default async function PanelLayout({
         <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4">
           <div className="flex items-center gap-6">
             <span className="font-extrabold text-brand-700">
-              Guennoun<span className="text-lime-500">Group</span>{" "}
+              Sile <span className="text-accent-500">Chemicals</span>{" "}
               <span className="text-xs font-semibold text-slate-400">
                 Admin
               </span>

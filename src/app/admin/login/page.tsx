@@ -34,7 +34,7 @@ export default function LoginPage() {
         className="w-full max-w-sm rounded-3xl border border-brand-100 bg-white p-8 shadow-lg"
       >
         <p className="text-center text-2xl font-extrabold text-brand-700">
-          Guennoun<span className="text-lime-500">Group</span>
+          Sile <span className="text-accent-500">Chemicals</span>
         </p>
         <p className="mb-6 mt-1 text-center text-sm text-slate-500">
           Espace administrateur

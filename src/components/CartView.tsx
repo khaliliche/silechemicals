@@ -252,7 +252,7 @@ export default function CartView() {
           <button
             type="button"
             onClick={send}
-            className="mt-5 flex w-full items-center justify-center gap-2 rounded-full bg-lime-400 px-6 py-3.5 font-bold text-slate-900 transition-colors hover:bg-lime-300"
+            className="mt-5 flex w-full items-center justify-center gap-2 rounded-full bg-accent-600 px-6 py-3.5 font-bold text-white transition-colors hover:bg-accent-700"
           >
             <Send size={18} className="rtl:-scale-x-100" />
             {t("send")}

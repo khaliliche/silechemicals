@@ -13,7 +13,8 @@ import {
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import ProductCard from "@/components/ProductCard";
-import { getProducts } from "@/lib/products";
+import { getCategories, getCategoryCounts, getProducts } from "@/lib/products";
+import CategoryCollections from "@/components/CategoryCollections";
 import { site, whatsappUrl } from "@/lib/site";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 
@@ -93,7 +94,11 @@ export default async function HomePage({
     { icon: Zap, title: a("v3Title"), text: a("v3Text") },
   ];
 
-  const all = await getProducts(12);
+  const [all, categories, counts] = await Promise.all([
+    getProducts(12),
+    getCategories(),
+    getCategoryCounts(),
+  ]);
   const featured = all.filter((p) => p.is_featured);
   const shown = (featured.length > 0 ? featured : all).slice(0, 4);
 
@@ -101,7 +106,7 @@ export default async function HomePage({
     <>
       <section className="relative overflow-hidden bg-linear-to-b from-brand-50 to-white">
         <div className="pointer-events-none absolute -end-16 -top-24 h-72 w-72 rounded-full bg-brand-200/50 blur-3xl" />
-        <div className="pointer-events-none absolute -start-20 top-40 h-64 w-64 rounded-full bg-lime-200/50 blur-3xl" />
+        <div className="pointer-events-none absolute -start-20 top-40 h-64 w-64 rounded-full bg-accent-200/50 blur-3xl" />
         {/* Phone / tablet: curated product showcase. Top: small overlapping fan above the logo. Bottom: swipeable rail. */}
         <div
           aria-hidden
@@ -165,15 +170,6 @@ export default async function HomePage({
           <HeroPhoto src="/hero/hero-7.webp" alt="Pressure washer brass valve" className="rotate-2" />
         </div>
         <div className="relative mx-auto max-w-6xl px-4 pb-64 pt-24 text-center sm:pb-72 sm:pt-32 xl:py-28">
-          {/* Logo above the title */}
-          <Image
-            src="/logo.png"
-            alt="GuennounGroup"
-            width={557}
-            height={321}
-            priority
-            className="mx-auto mb-8 w-40 sm:w-48"
-          />
           <h1 className="mx-auto max-w-3xl text-balance text-3xl font-extrabold leading-[1.15] tracking-tight text-brand-900 min-[380px]:text-4xl sm:text-5xl">
             {t("title")}
           </h1>
@@ -192,14 +188,25 @@ export default async function HomePage({
             </Link>
             <Link
               href="/cart"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-lime-400 px-7 py-3 font-semibold text-slate-900 shadow-lg shadow-lime-400/40 transition hover:-translate-y-0.5 hover:bg-lime-300"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-accent-600 px-7 py-3 font-semibold text-white shadow-lg shadow-accent-500/40 transition hover:-translate-y-0.5 hover:bg-accent-700"
             >
               <WhatsAppIcon size={18} />
               {t("ctaQuote")}
             </Link>
           </div>
+          {/* Big logo under the text */}
+          <Image
+            src="/logo.png"
+            alt="Sile Chemicals"
+            width={800}
+            height={192}
+            priority
+            className="mx-auto mt-12 w-72 mix-blend-multiply sm:mt-14 sm:w-[28rem] lg:w-[34rem]"
+          />
         </div>
       </section>
+
+      <CategoryCollections categories={categories} counts={counts} />
 
       <section className="mx-auto max-w-6xl px-4 py-14">
         <h2 className="mb-8 text-center text-2xl font-extrabold text-brand-900 sm:text-3xl">
@@ -215,8 +222,8 @@ export default async function HomePage({
             </h3>
             <p className="mt-2 text-slate-600">{t("wholesaleText")}</p>
           </div>
-          <div className="w-[85%] shrink-0 snap-center rounded-3xl border border-lime-200 bg-white p-7 shadow-sm sm:w-auto">
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-lime-100 text-lime-700">
+          <div className="w-[85%] shrink-0 snap-center rounded-3xl border border-accent-200 bg-white p-7 shadow-sm sm:w-auto">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-accent-100 text-accent-700">
               <Package size={24} />
             </div>
             <h3 className="text-lg font-bold text-brand-900">
@@ -359,7 +366,7 @@ export default async function HomePage({
           </p>
           <Link
             href="/catalogue"
-            className="mt-7 inline-block rounded-full bg-lime-400 px-8 py-3 font-bold text-slate-900 transition-colors hover:bg-lime-300"
+            className="mt-7 inline-block rounded-full bg-accent-600 px-8 py-3 font-bold text-white transition-colors hover:bg-accent-700"
           >
             {t("ctaCatalogue")}
           </Link>

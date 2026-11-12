@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "GuennounGroup — Produits et matériel de lavage auto",
-    "description": "Produits et matériel de lavage automobile en gros et à la pièce. Demandez votre devis en quelques clics."
+    "title": "Sile Chemicals — Produits chimiques et matériel de lavage auto",
+    "description": "Concentrés, produits individuels, machines et pièces de rechange pour le lavage automobile. Demandez votre devis en quelques clics."
   },
   "nav": {
     "home": "Accueil",
@@ -17,9 +17,9 @@
     "requestQuote": "Demander un devis"
   },
   "home": {
-    "title": "Bienvenue chez Guennoun Net !",
+    "title": "Bienvenue chez Sile Chemicals !",
     "subtitle": "Nous sommes ravis de vous accueillir et de vous présenter nos produits et notre activité.",
-    "company": "Guennoun Net est une société qui opère dans l’import et la distribution de produits et de matériel de nettoyage automobile. En partenariat avec des sociétés italiennes, nous vous proposons une panoplie de produits 100 % Made in Italy, de très bonne qualité et à des prix très adaptés. Appelez-nous pour profiter vite de nos différentes gammes.",
+    "company": "Sile Chemicals propose une gamme de produits chimiques concentrés et de matériel de nettoyage automobile, 100 % Made in Italy, de très bonne qualité et à des prix très adaptés. Appelez-nous pour profiter vite de nos différentes gammes.",
     "ctaCatalogue": "Voir le catalogue",
     "ctaQuote": "Demander un devis",
     "modesTitle": "En gros ou à la pièce, comme vous voulez",
@@ -30,7 +30,9 @@
     "featuredTitle": "Produits en vedette",
     "viewAll": "Voir tout le catalogue",
     "ctaBannerTitle": "Prêt à demander votre devis ?",
-    "ctaBannerText": "Choisissez vos produits et envoyez votre demande : vous recevez votre devis sur WhatsApp."
+    "ctaBannerText": "Choisissez vos produits et envoyez votre demande : vous recevez votre devis sur WhatsApp.",
+    "collectionsTitle": "Nos collections",
+    "collectionsSubtitle": "Choisissez une catégorie pour voir ses produits."
   },
   "catalogue": {
     "title": "Catalogue",
@@ -38,7 +40,9 @@
     "search": "Rechercher un produit…",
     "empty": "Les produits arrivent bientôt. Revenez nous voir !",
     "noResults": "Aucun produit ne correspond à votre recherche.",
-    "count": "{count} produit(s)"
+    "count": "{count} produit(s)",
+    "all": "Tous",
+    "emptyCategory": "Aucun produit dans cette collection pour le moment."
   },
   "product": {
     "back": "Retour au catalogue",
@@ -59,7 +63,7 @@
     "more": "Plus de produits"
   },
   "footer": {
-    "tagline": "Produits et matériel de lavage auto, en gros et à la pièce.",
+    "tagline": "Produits chimiques et matériel de lavage auto.",
     "rights": "Tous droits réservés."
   },
   "cart": {
@@ -91,7 +95,7 @@
   },
   "about": {
     "title": "À propos",
-    "intro": "GuennounGroup fournit des produits et du matériel de lavage automobile, en gros comme à la pièce.",
+    "intro": "Sile Chemicals fournit des produits chimiques, des machines et des pièces de rechange pour le lavage automobile, en gros comme à la pièce.",
     "v1Title": "Produits sélectionnés",
     "v1Text": "Une gamme de produits et de matériel de lavage choisis pour leur efficacité et leur fiabilité.",
     "v2Title": "Gros et détail",

@@ -164,7 +164,7 @@ export default function ProductBuy({ product }: { product: Product }) {
             <button
               type="button"
               onClick={onAdd}
-              className="flex items-center gap-2 rounded-full bg-lime-400 px-8 py-3.5 font-bold text-slate-900 transition-colors hover:bg-lime-300"
+              className="flex items-center gap-2 rounded-full bg-accent-600 px-8 py-3.5 font-bold text-white transition-colors hover:bg-accent-700"
             >
               <ClipboardList size={18} />
               {t("add")}

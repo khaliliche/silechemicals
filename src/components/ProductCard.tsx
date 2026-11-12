@@ -40,7 +40,7 @@ export default function ProductCard({ product }: { product: Product }) {
           <span className="rounded-full bg-brand-50 px-2.5 py-1 text-[11px] font-bold text-brand-700">
             {t("wholesale")}
           </span>
-          <span className="rounded-full bg-lime-100 px-2.5 py-1 text-[11px] font-bold text-lime-800">
+          <span className="rounded-full bg-accent-100 px-2.5 py-1 text-[11px] font-bold text-accent-800">
             {t("pieceByPiece")}
           </span>
         </div>

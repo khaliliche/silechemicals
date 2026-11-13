@@ -130,6 +130,20 @@ export function productJsonLd(p: Product, locale: string) {
         sku: p.slug,
         ...(description ? { description } : {}),
         ...(p.images?.length ? { image: p.images } : {}),
+        ...(Number(p.price) > 0
+          ? {
+              offers: {
+                "@type": "Offer",
+                url,
+                price: Number(p.price),
+                priceCurrency: "MAD",
+                availability:
+                  p.availability === "out_of_stock"
+                    ? "https://schema.org/OutOfStock"
+                    : "https://schema.org/InStock",
+              },
+            }
+          : {}),
       },
       {
         "@type": "BreadcrumbList",

@@ -1,8 +1,7 @@
-import CartBubble from "@/components/CartBubble";
 import JsonLd from "@/components/JsonLd";
 import { googleVerification, siteJsonLd, siteUrl } from "@/lib/seo";
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Cairo } from "next/font/google";
+import { Plus_Jakarta_Sans, Cairo, Barlow_Condensed } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -21,6 +20,13 @@ const jakarta = Plus_Jakarta_Sans({
 const cairo = Cairo({
   subsets: ["arabic", "latin"],
   variable: "--font-cairo",
+  display: "swap",
+});
+
+const barlow = Barlow_Condensed({
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
+  variable: "--font-barlow",
   display: "swap",
 });
 
@@ -59,16 +65,17 @@ export default async function LocaleLayout({ children, params }: Props) {
     <html
       lang={locale}
       dir={locale === "ar" ? "rtl" : "ltr"}
-      className={`${jakarta.variable} ${cairo.variable}`}
+      className={`${jakarta.variable} ${cairo.variable} ${barlow.variable}`}
     >
-      <body className="flex min-h-screen flex-col bg-white text-slate-800 antialiased">
+      <body className="flex min-h-screen flex-col bg-white text-zinc-800 antialiased">
         <JsonLd data={siteJsonLd(locale)} />
-        <NextIntlClientProvider><CartProvider>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <CartBubble />
-        </CartProvider></NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <CartProvider>
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </CartProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
